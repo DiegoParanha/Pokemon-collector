@@ -8,13 +8,17 @@
     <span class="card-title">{{ pokemon.name }}</span>
     <p>No. {{ pokemon.number }}</p>
     <p>Type: {{ pokemon.type }}</p>
-    <p>Description: {{ pokemon.description|linebreaks }}</p>
+    <p>Description: {{ pokemon.description }}</p>
     <p>Ability: {{ pokemon.ability }}</p>
     {% if pokemon.level > 0 %}
         <p>Level: {{ pokemon.level }}</p>
     {% else %}
         <p>level: egg</p>
     {% endif %}
+  </div>
+  <div class="card-action">
+    <a href="{% url 'pokemons_update' pokemon.id %}">Edit</a>
+    <a href="{% url 'pokemons_delete' pokemon.id %}">Release</a>
   </div>
 </div>
 
