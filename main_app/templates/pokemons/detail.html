@@ -52,9 +52,57 @@
   </div>
 </div>
 
+<hr>
+<div class="row">
+  <div class="col s6">
+    <h3>{{ pokemon.name }}'s Moves</h3>
+    {% if pokemon.moves.count %}
+      {% for move in pokemon.moves.all %}
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">
+              <span style="color: {{ move.color }}">{{ move.name }}</span> - {{ move.type }} 
+            </span>
+          </div>
+          <div class="card-action">
+            <form action="{% url 'unassoc_move' pokemon.id move.id %}" method="POST">
+              {% csrf_token %}
+              <button type="submit" class="btn">Remove</button>
+            </form>
+          </div>  
+        </div>
+      {% endfor %}
+    {% else %}
+      <h5>No Moves</h5>
+    {% endif %}
+  </div>
+
+  <div class="col s6">
+    <h3>Available Moves</h3>
+    {% if moves.count %}
+      {% for move in moves.all %}
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">
+              <span style="color: {{ move.color }}">{{ move.name }}</span> - {{ move.type }}
+            </span>
+          </div>
+          <div class="card-action">
+            <form action="{% url 'assoc_move' pokemon.id move.id %}" method="POST">
+              {% csrf_token %}
+              <button type="submit" class="btn">Add</button>
+            </form>
+          </div>
+        </div>
+      {% endfor %}
+    {% else %}
+      <h5>{{pokemon.name}} Already Has All Moves Available</h5>
+    {% endif %}
+  </div>
+</div>
+
 <script>
   const dateEl = document.getElementById('id_date');
-  // M is Materialize's global variable
   M.Datepicker.init(dateEl, {
     format: 'yyyy-mm-dd',
     defaultDate: new Date(),
