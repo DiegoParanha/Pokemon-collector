@@ -10,6 +10,7 @@ urlpatterns = [
     path('pokemons/<int:pk>/update', views.PokemonUpdate.as_view(), name='pokemons_update'),
     path('pokemons/<int:pk>/delete', views.PokemonDelete.as_view(), name='pokemons_delete'),
     path('pokemons/<int:pokemon_id>/add_feeding', views.add_feeding, name='add_feeding'),
+    path('pokemons/<int:pokemon_id>/add_photo', views.add_photo, name='add_photo'),
     path('pokemons/<int:pokemon_id>/assoc_move/<int:move_id>/', views.assoc_move, name='assoc_move'),
     path('pokemons/<int:pokemon_id>/unassoc_move/<int:move_id>/', views.unassoc_move, name='unassoc_move'),
     path('moves/', views.MoveList.as_view(), name='moves_index'),

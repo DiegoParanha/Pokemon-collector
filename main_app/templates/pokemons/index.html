@@ -2,6 +2,7 @@
 {% block content %}
 
 <h1>Pokemon Collection</h1>
+<p>Click any Pokemon to view their details</p>
 
 {% for pokemon in pokemons %}
 <a href="{% url 'detail' pokemon.id %}">
