@@ -66,3 +66,7 @@ class Photo(models.Model):
 
     def __str__(self):
         return f"Photo for pokemon_id: {self.pokemon_id} @{self.url}"
+    
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    favorite_color = models.CharField(max_length=50)
